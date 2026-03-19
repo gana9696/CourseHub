@@ -1,1 +1,1 @@
-export const BACKEND_URL ="https://coursehub-dmze.onrender.com"
+export const BACKEND_URL ="https://coursehub-dmze.onrender.com/api/v1"
