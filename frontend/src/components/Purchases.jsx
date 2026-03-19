@@ -32,7 +32,7 @@ function Purchases() {
   const handleLogout = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/v1/user/logout",
+        `${BACKEND_URL}/user/logout`,
         {
           withCredentials: true,
         }
