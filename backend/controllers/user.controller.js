@@ -93,30 +93,17 @@ export const logIn = async(req,res)=>{
 
 export const logout = (req, res) => {
   try {
-    // cookie exist nahi karti
-    if (!req.cookies || !req.cookies.jwt) {
-      return res.status(401).json({ error: "You are not logged in" });
-    }
-
-    // cookie clear
     res.clearCookie("jwt", {
       httpOnly: true,
-      sameSite: "strict",
-      secure: process.env.NODE_ENV === "production"
+      secure: true,
+      sameSite: "none"
     });
-
-    return res.status(200).json({
-      message: "Logout successful"
-    });
-
+    res.status(200).json({ message: "Logged out successfully" });
   } catch (error) {
-    console.log("error in logout", error);
-    return res.status(500).json({
-      error: "error in logout"
-    });
+    res.status(500).json({ errors: "Error in logout" });
+    console.log("Error in logout", error);
   }
 };
-
 
 export const purchases = async (req,res)=>{
   const userId =req.userId

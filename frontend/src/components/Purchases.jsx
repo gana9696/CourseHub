@@ -30,23 +30,20 @@ function Purchases() {
   
   // logout
   const handleLogout = async () => {
-    try {
-      const response = await axios.get(
-        `${BACKEND_URL}/user/logout`,
-        {
-          withCredentials: true,
-        }
-      );
-
-      toast.success(response.data.message);
-      localStorage.removeItem("user");
-      setIsLoggedIn(false);
-
-    } catch (error) {
-      console.log("error in logging out", error);
-      toast.error("error in logging out");
-    }
-  };
+  try {
+    const response = await axios.get(`${BACKEND_URL}/user/logout`, {
+      withCredentials: true,
+    });
+    toast.success(response.data.message);
+    localStorage.removeItem("user");
+    localStorage.removeItem("token"); // 👈 Yeh add karo
+    navigate("/login");
+    setIsLoggedIn(false);
+  } catch (error) {
+    console.log("Error in logging out ", error);
+    toast.error(error.response.data.errors || "Error in logging out");
+  }
+};
 
   // fetch courses
   useEffect(() => {
