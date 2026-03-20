@@ -5,8 +5,7 @@ import { Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { BACKEND_URL } from "../utils/utils";
-// import toast from "react-hot-toast";
-// import { BACKEND_URL } from "../utils/utils";
+
 
 function Login() {
   const [email, setEmail] = useState("");
